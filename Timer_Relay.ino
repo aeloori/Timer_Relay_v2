@@ -9,7 +9,11 @@ byte relayNo=0;
 
 void setup()
 {
-  pinMode(relayNo,OUTPUT);
+  pinMode(4,OUTPUT);//define relay pin numbers ranging from 1-4 (1)
+  pinMode(3,OUTPUT);//define relay pin numbers ranging from 1-4 (2)
+  pinMode(2,OUTPUT);//define relay pin numbers ranging from 1-4 (3)
+  pinMode(1,OUTPUT);//define relay pin numbers ranging from 1-4 (4)
+  
   pinMode(setPin,INPUT);
   pinMode(modePin,INPUT);
   Serial.begin(9600);
@@ -67,7 +71,7 @@ void RelayWorker()
     case 1:
     {
       digitalWrite(relayNo,HIGH);
-      for(int t=1;t<=10;t++)
+      for(int t=1;t<=1800;t++)
       {
         delay(1000);
       }
@@ -79,7 +83,7 @@ void RelayWorker()
     case 2:
     {
       digitalWrite(relayNo,HIGH);
-      for(int t=1;t<=10;t++)
+      for(int t=1;t<=3600;t++)
       {
         Serial.println();
         Serial.print("current second is ");
@@ -94,7 +98,7 @@ void RelayWorker()
     case 3:
     {
       digitalWrite(relayNo,HIGH);
-      for(int t=1;t<=10;t++)
+      for(int t=1;t<=5400;t++)
       {
         Serial.println();
         Serial.print("current second is ");
@@ -109,7 +113,7 @@ void RelayWorker()
      case 4:
     {
       digitalWrite(relayNo,HIGH);
-      for(int t=1;t<=10;t++)
+      for(int t=1;t<=7200;t++)
       {
         Serial.println();
         Serial.print("current second is ");
@@ -144,9 +148,9 @@ void TimeSetter()
       Serial.println(timer);
       Serial.println();
       delay(100);
-      if(timer>3)
+      if(timer>4)
       {
-        timer=0;
+        timer=1;
       }
     }
     else if(set==LOW)
@@ -175,9 +179,9 @@ void RelaySetter()
       Serial.println(relayNo);
       Serial.println();
       delay(100);
-      if(relayNo>3)
+      if(relayNo>4)
       {
-        relayNo=0;
+        relayNo=1;
       }
     }
     else if(mode==LOW)
